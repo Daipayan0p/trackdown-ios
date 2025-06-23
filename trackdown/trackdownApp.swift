@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct trackdownApp: App {
+    private let diContainer: DIContainer
+        init() {
+            self.diContainer = DIContainer(supabaseClient: Supabase.initSupabase())
+        }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AuthRootView(diContainer: diContainer)
         }
     }
 }

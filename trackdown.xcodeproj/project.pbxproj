@@ -6,23 +6,70 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CA5F98672E03059200D0FFA0 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = CA5F98662E03059200D0FFA0 /* Auth */; };
+		CA5F98692E03059200D0FFA0 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = CA5F98682E03059200D0FFA0 /* PostgREST */; };
+		CA5F986B2E03059200D0FFA0 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = CA5F986A2E03059200D0FFA0 /* Storage */; };
+		CA5F986D2E03059200D0FFA0 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = CA5F986C2E03059200D0FFA0 /* Supabase */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA5672612E09633D00437CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA88C4392DDA1E2400B57E0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA88C4402DDA1E2400B57E0A;
+			remoteInfo = trackdown;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		CA56725D2E09633D00437CB5 /* trackdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = trackdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA88C4412DDA1E2400B57E0A /* trackdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trackdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CA687F652E03327100669FC1 /* Exceptions for "trackdown" folder in "trackdown" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CA88C4402DDA1E2400B57E0A /* trackdown */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		CA56725E2E09633D00437CB5 /* trackdownTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = trackdownTests;
+			sourceTree = "<group>";
+		};
 		CA88C4432DDA1E2400B57E0A /* trackdown */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CA687F652E03327100669FC1 /* Exceptions for "trackdown" folder in "trackdown" target */,
+			);
 			path = trackdown;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA56725A2E09633D00437CB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA88C43E2DDA1E2400B57E0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5F986D2E03059200D0FFA0 /* Supabase in Frameworks */,
+				CA5F986B2E03059200D0FFA0 /* Storage in Frameworks */,
+				CA5F98692E03059200D0FFA0 /* PostgREST in Frameworks */,
+				CA5F98672E03059200D0FFA0 /* Auth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				CA88C4432DDA1E2400B57E0A /* trackdown */,
+				CA56725E2E09633D00437CB5 /* trackdownTests */,
 				CA88C4422DDA1E2400B57E0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				CA88C4412DDA1E2400B57E0A /* trackdown.app */,
+				CA56725D2E09633D00437CB5 /* trackdownTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +97,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA56725C2E09633D00437CB5 /* trackdownTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA5672632E09633D00437CB5 /* Build configuration list for PBXNativeTarget "trackdownTests" */;
+			buildPhases = (
+				CA5672592E09633D00437CB5 /* Sources */,
+				CA56725A2E09633D00437CB5 /* Frameworks */,
+				CA56725B2E09633D00437CB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA5672622E09633D00437CB5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CA56725E2E09633D00437CB5 /* trackdownTests */,
+			);
+			name = trackdownTests;
+			packageProductDependencies = (
+			);
+			productName = trackdownTests;
+			productReference = CA56725D2E09633D00437CB5 /* trackdownTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CA88C4402DDA1E2400B57E0A /* trackdown */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA88C44C2DDA1E2500B57E0A /* Build configuration list for PBXNativeTarget "trackdown" */;
@@ -65,6 +137,10 @@
 			);
 			name = trackdown;
 			packageProductDependencies = (
+				CA5F98662E03059200D0FFA0 /* Auth */,
+				CA5F98682E03059200D0FFA0 /* PostgREST */,
+				CA5F986A2E03059200D0FFA0 /* Storage */,
+				CA5F986C2E03059200D0FFA0 /* Supabase */,
 			);
 			productName = trackdown;
 			productReference = CA88C4412DDA1E2400B57E0A /* trackdown.app */;
@@ -77,9 +153,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					CA56725C2E09633D00437CB5 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = CA88C4402DDA1E2400B57E0A;
+					};
 					CA88C4402DDA1E2400B57E0A = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -94,17 +174,28 @@
 			);
 			mainGroup = CA88C4382DDA1E2400B57E0A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CA5F98652E03059200D0FFA0 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CA88C4422DDA1E2400B57E0A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CA88C4402DDA1E2400B57E0A /* trackdown */,
+				CA56725C2E09633D00437CB5 /* trackdownTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA56725B2E09633D00437CB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA88C43F2DDA1E2400B57E0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +206,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA5672592E09633D00437CB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA88C43D2DDA1E2400B57E0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +222,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CA5672622E09633D00437CB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA88C4402DDA1E2400B57E0A /* trackdown */;
+			targetProxy = CA5672612E09633D00437CB5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		CA5672642E09633D00437CB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MF2D8WU8L3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.draven.trackdownTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/trackdown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/trackdown";
+			};
+			name = Debug;
+		};
+		CA5672652E09633D00437CB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MF2D8WU8L3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.draven.trackdownTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/trackdown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/trackdown";
+			};
+			name = Release;
+		};
 		CA88C44A2DDA1E2500B57E0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -256,6 +400,7 @@
 				DEVELOPMENT_TEAM = MF2D8WU8L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = trackdown/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +429,7 @@
 				DEVELOPMENT_TEAM = MF2D8WU8L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = trackdown/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -305,6 +451,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA5672632E09633D00437CB5 /* Build configuration list for PBXNativeTarget "trackdownTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA5672642E09633D00437CB5 /* Debug */,
+				CA5672652E09633D00437CB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA88C43C2DDA1E2400B57E0A /* Build configuration list for PBXProject "trackdown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -324,6 +479,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA5F98652E03059200D0FFA0 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA5F98662E03059200D0FFA0 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5F98652E03059200D0FFA0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		CA5F98682E03059200D0FFA0 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5F98652E03059200D0FFA0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		CA5F986A2E03059200D0FFA0 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5F98652E03059200D0FFA0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		CA5F986C2E03059200D0FFA0 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5F98652E03059200D0FFA0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA88C4392DDA1E2400B57E0A /* Project object */;
 }
