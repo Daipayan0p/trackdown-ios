@@ -106,10 +106,10 @@ struct LoginView: View {
                 SocialLoginButton(imageName: "google") {
                     // Handle Google login
                 }
-                
-                SocialLoginButton(imageName: "facebook") {
-                    // Handle Facebook login
-                }
+//                
+//                SocialLoginButton(imageName: "facebook") {
+//                    // Handle Facebook login
+//                }
             }
         }
     }

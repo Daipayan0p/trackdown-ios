@@ -9,18 +9,48 @@ import SwiftUI
 
 struct CountDownHome: View {
     
+    @State private var events: [Event] = [
+        Event(id: UUID(), title: "Event 1", date: "July 1, 2025"),
+        Event(id: UUID(), title: "Event 2", date: "July 10, 2025"),
+        Event(id: UUID(), title: "Event 3", date: "August 5, 2025")
+    ]
+
+
     @EnvironmentObject private var authVM: AuthViewModel
     @State private var search = ""
-
+    
     var body: some View {
         VStack(spacing: 0) {
             getHeaderImage()
                 .padding(.bottom,24)
-            Text("Your Events")
-                .font(.system(size: 24, weight: .bold, design: .default))
-                .alignLeft()
-                .padding(.leading)
-                .padding(.bottom,12)
+            HStack {
+                Text("Your Events")
+                    .font(.system(size: 24, weight: .bold, design: .default))
+
+                Spacer()
+                
+                Button(action: {
+                    print("Create Event tapped")
+                }) {
+                    Image(systemName: "gearshape.fill")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.gray)
+                        .onTapGesture {
+                            authVM.signOut()
+                        }
+                }
+
+                Button(action: {
+                    print("Create Event tapped")
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(.blue)
+                }
+                
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 12)
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.gray)
@@ -31,7 +61,16 @@ struct CountDownHome: View {
             .cornerRadius(10)
             .padding(.horizontal)
             
-            Spacer()
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(events) { event in
+                        SwipeableEventCardView(event: event){
+                            events.removeAll { $0.id == event.id }
+                        }
+                    }
+                }
+                .padding(.vertical,14)
+            }
         }
         .ignoresSafeArea(.container, edges: .top)
     }
