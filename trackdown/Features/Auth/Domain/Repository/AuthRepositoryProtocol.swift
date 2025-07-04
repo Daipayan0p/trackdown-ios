@@ -14,6 +14,7 @@ protocol AuthRepositoryProtocol {
     func getCurrentUser() async -> User?
     func handleDeepLink(_ url: URL) async throws
     func observeAuthState() -> AsyncStream<Bool>
+    func signInWithGoogle(idToken:String) async throws -> User
 }
 
 protocol SignInUseCaseProtocol {
@@ -30,4 +31,8 @@ protocol SignOutUseCaseProtocol {
 
 protocol ObserveAuthUseCaseProtocol {
     func execute() -> AsyncStream<Bool>
+}
+
+protocol SignInWithGoogleProtocol {
+    func execute(idToken:String) async throws -> User
 }

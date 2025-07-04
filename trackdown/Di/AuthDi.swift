@@ -37,6 +37,10 @@ class DIContainer {
         ObserveAuthUseCase(repository: authRepository)
     }()
     
+    lazy var signInWithGoogleUseCase: SignInWithGoogleProtocol = {
+        SignInWithGoogleUseCase(repository: authRepository)
+    }()
+    
     // MARK: - ViewModels
     @MainActor
     lazy var authViewModel: AuthViewModel = {
@@ -45,7 +49,8 @@ class DIContainer {
             signUpUseCase: signUpUseCase,
             signOutUseCase: signOutUseCase,
             observeAuthUseCase: observeAuthUseCase,
-            repository: authRepository
+            repository: authRepository,
+            signInWithGoogleUseCase: signInWithGoogleUseCase
         )
     }()
 }

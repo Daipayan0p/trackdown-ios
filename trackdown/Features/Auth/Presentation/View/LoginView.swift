@@ -104,18 +104,15 @@ struct LoginView: View {
                 }
                 
                 SocialLoginButton(imageName: "google") {
-                    // Handle Google login
+                    authVM.handleGoogleSignIn()
                 }
-//                
-//                SocialLoginButton(imageName: "facebook") {
-//                    // Handle Facebook login
-//                }
             }
         }
     }
 }
 
-
 #Preview {
-    LoginView()
+    let mockSupabase = Supabase.initSupabase()
+    let mockContainer = DIContainer(supabaseClient: mockSupabase)
+    AuthRootView(diContainer: mockContainer)
 }

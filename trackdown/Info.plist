@@ -12,6 +12,16 @@
 				<string>trackdown</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.429358052782-veau449tsb166730kn67ib9n3d3r6skf</string>
+			</array>
+		</dict>
 	</array>
+	<key>GIDClientID</key>
+	<string>429358052782-veau449tsb166730kn67ib9n3d3r6skf.apps.googleusercontent.com</string>
 </dict>
 </plist>

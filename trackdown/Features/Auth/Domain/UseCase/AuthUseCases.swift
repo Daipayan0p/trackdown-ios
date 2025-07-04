@@ -58,3 +58,15 @@ class ObserveAuthUseCase: ObserveAuthUseCaseProtocol {
         return repository.observeAuthState()
     }
 }
+
+class SignInWithGoogleUseCase: SignInWithGoogleProtocol{
+    func execute(idToken:String) async throws -> User {
+        return try await repository.signInWithGoogle(idToken: idToken)
+    }
+    
+    private let repository: AuthRepositoryProtocol
+    
+    init(repository: AuthRepositoryProtocol) {
+        self.repository = repository
+    }
+}

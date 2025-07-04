@@ -9,7 +9,7 @@ import Foundation
 import Supabase
 
 class SupabaseAuthRepository: AuthRepositoryProtocol {
-  
+    
     
     private let supabase: SupabaseClient
     
@@ -33,6 +33,19 @@ class SupabaseAuthRepository: AuthRepositoryProtocol {
             throw mapSupabaseError(error)
         }
     }
+    
+    func signInWithGoogle(idToken:String) async throws -> User {
+            
+        do {
+            let session = try await supabase.auth.signInWithIdToken(credentials: .init(provider: .google, idToken: idToken))
+            
+            // Use the existing mapToUser helper method for consistency
+            return mapToUser(from: session)
+        } catch {
+            throw mapSupabaseError(error)
+        }
+    }
+    
     
     func signUp(signUpData: SignUpData) async throws {
         do {
@@ -99,3 +112,5 @@ class SupabaseAuthRepository: AuthRepositoryProtocol {
         }
     }
 }
+
+
