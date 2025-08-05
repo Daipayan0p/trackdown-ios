@@ -1,9 +1,4 @@
-# Ignore everything in Constants folder
-./Constants/*
+# Ignore everything in this folder
+*
 
-# But keep this file
-!Constants/.gitignore
 
-./gitignore
-
-./Supabase.swift
