@@ -2,10 +2,11 @@
 
 TrackDown is a sleek and modern countdown app built for iOS that helps you keep track of upcoming events in style. Whether it's your friend's birthday, an exam, a trip, or any special occasion — TrackDown ensures you never miss a thing.
 
-![TrackDown Screenshot 1](./assets/ss1.png)
-![TrackDown Screenshot 2](./assets/ss2.png)
-![TrackDown Screenshot 2](./assets/ss5.png)
-
+<p float="left">
+  <img src="assets/ss1.png" width="30%" style="margin-right: 10px;" />
+  <img src="assets/ss2.png" width="30%" style="margin-right: 10px;" />
+  <img src="assets/ss5.png" width="30%" />
+</p>
 
 ---
 
@@ -33,7 +34,11 @@ TrackDown is a sleek and modern countdown app built for iOS that helps you keep 
 
 | Countdown View | Add Event View |
 |----------------|----------------|
-| ![s1](./assets/screenshot3.png) | ![s2](./assets/screenshot4.png) |
+
+<p float="left">
+  <img src="assets/ss3.png" width="30%" style="margin-right: 10px;" />
+  <img src="assets/ss4.png" width="30%" style="margin-right: 10px;" />
+</p>
 
 ---
 
