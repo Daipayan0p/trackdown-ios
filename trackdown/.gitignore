@@ -1,7 +1,0 @@
-.gitignore
-./Constants/*
-# Ignore everything in Constants folder
-Constants/*
-
-# But keep this file
-!Constants/.gitignore
