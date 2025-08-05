@@ -32,8 +32,6 @@ TrackDown is a sleek and modern countdown app built for iOS that helps you keep 
 
 ## 📸 Screenshots
 
-> *(Replace the paths with actual image paths if needed)*
-
 | Countdown View | Add Event View |
 |----------------|----------------|
 ## Dark Mode
