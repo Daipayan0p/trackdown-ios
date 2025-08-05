@@ -89,52 +89,50 @@ class AuthViewModel: ObservableObject {
         errorMessage = nil
     }
     
-    // Updated Google Sign In method that properly integrates with your existing flow
+    // Updated async Google Sign In method
     func handleGoogleSignIn() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                     let window = windowScene.windows.first,
-                     let presentingViewController = window.rootViewController else {
-                   errorMessage = "Unable to get presenting view controller"
-                   return
-               }
-        isLoading = true
-        errorMessage = nil
-        
-        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { [weak self] signInResult, error in
-            Task { @MainActor in
-                guard let self = self else { return }
-                
-                if let error = error {
-                    self.errorMessage = error.localizedDescription
-                    self.isLoading = false
-                    return
+        Task {
+            await performAuthAction { [self] in
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                      let window = windowScene.windows.first,
+                      let presentingViewController = window.rootViewController else {
+                    throw GoogleSignInError.noPresentingViewController
                 }
                 
-                guard let signInResult = signInResult else {
-                    self.errorMessage = "Failed to get sign in result"
-                    self.isLoading = false
-                    return
-                }
-                
-                signInResult.user.refreshTokensIfNeeded { user, error in
-                    Task { @MainActor in
+                // Sign in with Google
+                let signInResult = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<GIDSignInResult, Error>) in
+                    GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { result, error in
                         if let error = error {
-                            self.errorMessage = error.localizedDescription
-                            self.isLoading = false
-                            return
+                            continuation.resume(throwing: error)
+                        } else if let result = result {
+                            continuation.resume(returning: result)
+                        } else {
+                            continuation.resume(throwing: GoogleSignInError.noResult)
                         }
-                        
-                        guard let user = user,
-                              let idToken = user.idToken?.tokenString else {
-                            self.errorMessage = "Failed to get ID token"
-                            self.isLoading = false
-                            return
-                        }
-                        
-                        // Now call your existing signInWithGoogle method
-                        self.signInWithGoogle(idToken: idToken)
                     }
                 }
+                
+                // Refresh tokens if needed
+                let user = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<GIDGoogleUser, Error>) in
+                    signInResult.user.refreshTokensIfNeeded { user, error in
+                        if let error = error {
+                            continuation.resume(throwing: error)
+                        } else if let user = user {
+                            continuation.resume(returning: user)
+                        } else {
+                            continuation.resume(throwing: GoogleSignInError.noUser)
+                        }
+                    }
+                }
+                
+                // Get ID token
+                guard let idToken = user.idToken?.tokenString else {
+                    throw GoogleSignInError.noIdToken
+                }
+                
+                // Use the existing signInWithGoogle use case
+                let authUser = try await signInWithGoogleUseCase.execute(idToken: idToken)
+                currentUser = authUser
             }
         }
     }
@@ -158,10 +156,33 @@ class AuthViewModel: ObservableObject {
             try await action()
         } catch let authError as AuthError {
             errorMessage = authError.errorDescription
+        } catch let googleError as GoogleSignInError {
+            errorMessage = googleError.localizedDescription
         } catch {
             errorMessage = "An unexpected error occurred"
         }
         
         isLoading = false
+    }
+}
+
+// Custom error enum for Google Sign-In specific errors
+enum GoogleSignInError: LocalizedError {
+    case noPresentingViewController
+    case noResult
+    case noUser
+    case noIdToken
+    
+    var errorDescription: String? {
+        switch self {
+        case .noPresentingViewController:
+            return "Unable to get presenting view controller"
+        case .noResult:
+            return "Failed to get sign in result"
+        case .noUser:
+            return "Failed to get user after token refresh"
+        case .noIdToken:
+            return "Failed to get ID token"
+        }
     }
 }

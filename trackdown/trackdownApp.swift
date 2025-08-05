@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct trackdownApp: App {
@@ -17,5 +18,6 @@ struct trackdownApp: App {
         WindowGroup {
             AuthRootView(diContainer: diContainer)
         }
+        .modelContainer(for: Event.self)
     }
 }

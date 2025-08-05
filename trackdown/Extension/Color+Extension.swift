@@ -18,3 +18,4 @@ extension Color{
     static let customTextColor = Color("white_black_text")
     
 }
+
