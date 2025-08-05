@@ -43,66 +43,12 @@ struct SimpleEntry: TimelineEntry {
     let event: [SimpleEvent]
 }
 
+/// Main view that is showed
 struct trackdown_widgetEntryView : View {
-    var entry: Provider.Entry
+    var entry: SimpleEntry
     
     var body: some View {
-        VStack {
-            HStack{
-                upcomingEventCardView(event: entry.event[0])
-                Divider()
-                    .frame(height: 160)
-                    .frame(width: 1) // Thickness
-                    .background(.black)
-                VStack(alignment: .leading,spacing: 10){
-                    ForEach(entry.event.dropFirst().prefix(3)){ event in
-                        eventCardView(event: event)
-                    }
-                    Spacer()
-                }
-                .padding(.top)
-            }
-        }
-    }
-    
-    @ViewBuilder func upcomingEventCardView(event:SimpleEvent) -> some View{
-        VStack(alignment:.leading){
-            Text(event.title)
-                .font(.system(size: 18, weight: .heavy))
-            Text("14")
-                .font(.system(size: 42, weight: .black))
-            
-            Text("days")
-                .font(.system(size: 14, weight: .bold))
-            Text("11/05/25")
-                .font(.system(size: 14, weight: .bold))
-            
-        }
-        .frame(width: 100)
-    }
-    
-    @ViewBuilder
-    private func eventCardView(event:SimpleEvent) -> some View{
-        HStack(){
-            VStack(alignment:.leading){
-                Text(event.title)
-                    .font(.system(size: 14, weight: .heavy))
-                if(event.date.isToday){
-                    Text(event.date.relativeFormattedDate)
-                        .font(.system(size: 14, weight: .medium))
-                }else{
-                    Text(event.date.formattedDateShort)
-                        .font(.system(size: 14, weight: .medium))
-                }
-            }
-            Spacer()
-            VStack{
-                Text("\(event.timeRemainingValue ?? 0)")
-                    .font(.system(size: 16, weight: .heavy))
-                Text(event.timeUnit?.rawValue ?? "--")
-                    .font(.system(size: 14, weight: .medium))
-            }
-        }
+        MainWidgetView(entry: entry)
     }
 }
 
@@ -122,8 +68,7 @@ struct trackdown_widget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemMedium,.systemLarge])
     }
 }
-
 

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum TimeUnit: String, Codable {
+    case days
     case day
     case hour
 }
@@ -41,10 +42,15 @@ extension Event {
 
         if !isExpired {
             let components = calendar.dateComponents([.day, .hour], from: now, to: dateTime)
-            if let days = components.day, days > 0 {
+            if let days = components.day, days > 1 {
                 timeRemainingValue = days
+                timeUnit = .days
+            }
+            else if let day = components.day, day == 1 {
+                timeRemainingValue = day
                 timeUnit = .day
-            } else if let hours = components.hour, hours > 0 {
+            }
+            else if let hours = components.hour, hours > 0 {
                 timeRemainingValue = hours
                 timeUnit = .hour
             }
