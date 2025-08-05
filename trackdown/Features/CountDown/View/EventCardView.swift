@@ -29,21 +29,16 @@ struct EventCardView: View {
                 .font(Font.system(size: 16, weight:.semibold))
             
             Spacer()
-            Text(event.date)
+            Text(event.date.formattedDateShort)
                 .font(Font.system(size: 12))
                 .foregroundStyle(.secondary)
         }
         .padding()
         .frame(height: 60)
-        .background(Color.customLightBlue)
+        .background(event.color)
         .cornerRadius(12)
     }
     
-}
-
-#Preview {
-    EventCardView(event: Event(id: UUID(), title: "Event 1", date: "July 1, 2025"))
-        .padding()
 }
 
 struct SwipeableEventCardView: View {

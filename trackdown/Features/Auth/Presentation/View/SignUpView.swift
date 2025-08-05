@@ -17,11 +17,11 @@ struct SignUpView: View{
     var body: some View {
         VStack(spacing: 20) {
             // Logo
-            Image(colorScheme == .light ? "logo" : "logo_dark")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 360, height: colorScheme == .light ? 300 : 340)
-            
+            //            Image(colorScheme == .light ? "logo" : "logo_dark")
+            //                .resizable()
+            //                .aspectRatio(contentMode: .fit)
+            //                .frame(width: 360, height: colorScheme == .light ? 300 : 340)
+            logoImage
             // Input Fields
             VStack(spacing: 16) {
                 AuthTextField(
@@ -96,7 +96,7 @@ struct SignUpView: View{
                         dismiss()
                     }
                 }
-                             
+                
             }
             
             // Sign In Link
@@ -130,4 +130,23 @@ struct SignUpView: View{
             }
         }
     }
+    
+    private var logoImage: some View {
+        VStack{
+            Text("Sign Up")
+                .padding(.top,180)
+                .font(.system(size: 34, weight: .bold))
+                .padding(.bottom)
+                .padding(.bottom)
+            
+        }
+        
+        
+    }
+}
+
+#Preview {
+    let mockSupabase = Supabase.initSupabase()
+    let mockContainer = DIContainer(supabaseClient: mockSupabase)
+    AuthRootView(diContainer: mockContainer)
 }

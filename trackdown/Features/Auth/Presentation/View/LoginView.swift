@@ -75,9 +75,16 @@ struct LoginView: View {
     
     // MARK: - View Components
     private var logoImage: some View {
-        Image(colorScheme == .light ? "logo" : "logo_dark")
-            .resizable()
-            .frame(width: 360, height: colorScheme == .light ? 300 : 340)
+        VStack{
+            Text("Login")
+                .padding(.top,140)
+                .font(.system(size: 34, weight: .bold))
+                .padding(.bottom)
+                .padding(.bottom)
+
+        }
+
+        
     }
     
     private var forgotPasswordButton: some View {
