@@ -1,0 +1,17 @@
+# Ignore everything in Constants folder
+./Constants/*
+
+# But keep this file
+!Constants/.gitignore
+
+./gitignore
+./Constants/*
+# Ignore everything in Constants folder
+trackdown/Constants/*
+
+# But keep this (if needed)
+!trackdown/Constants/.gitignore
+# Ignore everything in Supabase
+trackdown/Constants/Supabase/*
+
+trackdown/Constants/*
